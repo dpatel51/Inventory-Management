@@ -5,7 +5,7 @@ const app=express();
 const authRoutes=require('./routes/authRoutes')
 
 
-//middleware
+//middleware 
 app.use(express.static("public"));
 app.use(express.json()); // help to get the data from request made and convert it to js object and and gives access to use that data
 app.use(cookieParser());
@@ -26,7 +26,10 @@ main();
 // app.get('*',checkUser)
 
 app.get('/',(req,res)=>{
-    res.render('Home');
+    res.render('home');
+})
+app.get('/products',(req,res)=>{
+    res.render('products');
 })
 
 

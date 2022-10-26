@@ -1,0 +1,85 @@
+*{
+    margin:0;
+    padding: 0;
+    font-family: 'Ubuntu', sans-serif;
+}
+.nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    background-color: black;
+    color: white;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    padding-right:10px;
+    padding-left: 10px;
+    z-index: 100;
+}
+#nav-right-most{
+    height: 100%;
+    width: 150px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right:20px ;
+    
+}
+#nav-button{
+   border: none;
+   padding-top: 5px;
+   padding-bottom: 5px;
+   padding-right: 3px;
+   padding-left: 3px;
+   border-radius: 5px;
+   background-color: rgb(138, 138, 216);
+}
+#sidebar{
+    margin-top: 70px;
+    width:250px;
+    height: 100vh;
+    background-color:black;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    
+}
+#sidebar ul{
+        width: 100%;
+        margin-top: 25px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+}
+#sidebar ul li{
+ list-style: none; 
+ font-size: 1.2rem;
+ padding-top: 10px;
+ padding-bottom: 10px;
+ margin: 5px 0; 
+ height: 30px; 
+}
+
+#sidebar ul li a{
+ text-decoration: none;
+ padding:12px; 
+ color: grey; 
+ transition: color 0.5s ease-out;
+}
+#sidebar ul li a:hover{
+color: rgb(133, 135, 228); 
+}
+#sidebar ul li a span{
+margin-left: 5px;
+}
+#sidebar ul li a span:hover{
+color: rgb(133, 135, 228); 
+}
+.active{
+    color: rgb(133, 135, 228) !important; 
+}
+
+
