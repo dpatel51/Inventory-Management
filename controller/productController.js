@@ -37,12 +37,17 @@ module.exports.addProduct=async(req,res)=>{
         price:req.body.price,
         description:req.body.description
     })
+    console.log(productw);
     try{
         const savedProduct=await productw.save()
+        console.log("Added Product Successfully");
         res.json(savedProduct)
     }catch(err){
         res.json({message:err})
     }
+}
+module.exports.getAddProduct=async(req,res)=>{
+    res.render('add')
 }
 
 // update a product //done

@@ -1,0 +1,50 @@
+#product-table{
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+   margin-top: 30px;
+   width: 99%;
+   font-size: 0.9em;
+   /* max-width: 99vw; */
+   border-radius:5px 5px 0 0;
+}
+#product-table thead tr{
+    background-color: #009879;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+}
+#product-table th,#product-table td{
+padding: 12px 15px;
+}
+#product-table tbody tr{
+    border-bottom: 1px solid #dddddd;
+    text-align: center;
+}
+#product-table tbody tr:nth-of-type(even){
+    background-color: #f3f3f3;
+}
+#product-table tbody tr:nth-of-type(even){
+    background-color: #f3f3f3;
+}
+#product-table tbody tr:last-of-type{
+    border-bottom:2px solid #009879 ;
+}
+#add-product {
+    margin-top: 30px;
+}
+#add-product button{
+    padding: 9px;
+    background-color: #009879;
+    border: none;
+    border-radius: 5px;
+    box-shadow: rgb(0 0 0 / 25%) 0px 54px 55px, rgb(0 0 0 / 12%) 0px -12px 30px, rgb(0 0 0 / 12%) 0px 4px 6px, rgb(0 0 0 / 17%) 0px 12px 13px, rgb(0 0 0 / 9%) 0px -3px 5px;
+}
+#add-product a {
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;  
+    transition: color 0.5s ease-out;
+}
+#add-product a:hover{
+   color: yellow;
+}
+

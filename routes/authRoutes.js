@@ -5,4 +5,6 @@ const productController=require('../controller/productController')
 
 router.get('/products',productController.getProducts)
 router.get('/products/:productId',productController.getProduct)
-module.exports=router
+router.get('/addproduct',productController.getAddProduct)
+router.post('/addproduct',productController.addProduct)
+module.exports=router 
