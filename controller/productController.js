@@ -3,42 +3,47 @@ const product =require('../models/product')
 
 // methods for managing products
 
-// get all products
+// get all products //done
 exports.getProducts=async(req,res)=>{
     try{
-        const products=await product.find()
+        const products=await product.find(); 
         res.json(products)
     }catch(err){
         res.json({message:err})
     }
 }
 
-// get a specific product
+// get a specific product //done
 exports.getProduct=async(req,res)=>{
-    try{
-        const product=await product.findById(req.params.productId)
-        res.json(product)
+    
+    try{ 
+        const productdata =await product.findById(req.params.productId); 
+        res.json(productdata)
     }catch(err){
-        res.json({message:err})
-    }
+        console.log({message:err});
+        res.json({message:err}) 
+    } 
 }
 
-// add a product
+// add a product // done
 exports.addProduct=async(req,res)=>{
-    const product=new product({
+
+    const productw=new product({  
         name:req.body.name,
         price:req.body.price,
         description:req.body.description
     })
+
+
     try{
-        const savedProduct=await product.save()
+        const savedProduct=await productw.save()
         res.json(savedProduct)
     }catch(err){
         res.json({message:err})
     }
 }
 
-// update a product
+// update a product //done
 exports.updateProduct=async(req,res)=>{
 
     try{
@@ -46,13 +51,15 @@ exports.updateProduct=async(req,res)=>{
             {_id:req.params.productId},
             {$set:{name:req.body.name,price:req.body.price,description:req.body.description}}
         )
+        console.log(updatedProduct);
         res.json(updatedProduct)
     }catch(err){
+        console.log(err);
         res.json({message:err})
     }
 }
 
-// delete a product
+// delete a product //done
 exports.deleteProduct=async(req,res)=>{
     try{
         const removedProduct=await product.remove({_id:req.params.productId})
