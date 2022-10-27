@@ -28,12 +28,4 @@ main();
 app.get('/',(req,res)=>{
     res.render('home');
 })
-app.get('/products',(req,res)=>{
-    res.render('products');
-})
-
-
-
-
-
 app.use(authRoutes);

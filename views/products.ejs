@@ -1,5 +1,32 @@
-<%- include('partials/header') -%>
+<%- include('partials/header',{val:{title:'Products',page:'product'}}) -%>
 <div class="mt-72 ml-257">
-    this is a Product page
+    <h1>Product page</h1>
+    <div class="product-list">
+        <table id="product-table">
+            <thead>
+            <tr id="product-table-head">
+                <th>Product name</th>
+                <th>Price</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+            <tbody>
+                <% if(products) {
+                    products.forEach((product)=>{%>
+            <tr>
+                <td><%= product.name  %></td>
+                <td><%= product.price  %></td>
+                <td><%= product.description  %></td>
+            </tr>
+            <% })}%>
+            </tbody>
+
+        </table>
+    </div>
+
 </div>
-<%- include('partials/footer') -%>
+
+
+    
+</body>
+</html>

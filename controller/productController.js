@@ -4,17 +4,21 @@ const product =require('../models/product')
 // methods for managing products
 
 // get all products //done
-exports.getProducts=async(req,res)=>{
+module.exports.getProducts=async(req,res)=>{
     try{
         const products=await product.find(); 
-        res.json(products)
+        if(products){
+        console.log(products);
+        res.locals.products=products
+        }
+        res.render('products')
     }catch(err){
         res.json({message:err})
     }
 }
 
 // get a specific product //done
-exports.getProduct=async(req,res)=>{
+module.exports.getProduct=async(req,res)=>{
     
     try{ 
         const productdata =await product.findById(req.params.productId); 
@@ -26,15 +30,13 @@ exports.getProduct=async(req,res)=>{
 }
 
 // add a product // done
-exports.addProduct=async(req,res)=>{
+module.exports.addProduct=async(req,res)=>{
 
     const productw=new product({  
         name:req.body.name,
         price:req.body.price,
         description:req.body.description
     })
-
-
     try{
         const savedProduct=await productw.save()
         res.json(savedProduct)
@@ -44,7 +46,7 @@ exports.addProduct=async(req,res)=>{
 }
 
 // update a product //done
-exports.updateProduct=async(req,res)=>{
+module.exports.updateProduct=async(req,res)=>{
 
     try{
         const updatedProduct=await product.updateOne(
@@ -60,7 +62,7 @@ exports.updateProduct=async(req,res)=>{
 }
 
 // delete a product //done
-exports.deleteProduct=async(req,res)=>{
+module.exports.deleteProduct=async(req,res)=>{
     try{
         const removedProduct=await product.remove({_id:req.params.productId})
         res.json(removedProduct)
