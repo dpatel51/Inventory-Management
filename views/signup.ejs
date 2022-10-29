@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="/signup_login/login.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/8e541bc5fb.js" crossorigin="anonymous"></script>
+    <title>Signup</title>
+</head>
+<body>
+    <form >
+        <h2>Sign up</h2>
+        <label for="name">Name</label>
+         <input  type="text" id="name" name="name" required>
+        <label for="email">Email</label>
+       <input  type="text" id="email" name="email" required>
+        <div class="email error" id="emailError"></div>
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" required />
+        <div class="password error" id="passwordError"></div>
+        <button id="button">Sign up</button>
+      </form>
+      <script>
+        const button=document.getElementById('button')
+        const emailError=document.getElementById('emailError')
+        const passwordError=document.getElementById('passwordError')
+        
+        button.addEventListener('click',async (e)=>{
+          e.preventDefault()
+          emailError.innerText=''
+          passwordError.innerText=''
+          const name=document.getElementById('name').value;
+          const email=document.getElementById('email').value;
+          const password=document.getElementById('password').value;
+           console.log(name,email,password)
+           data={
+            name:name,
+              email:email,
+              password:password
+           }
+           try {
+               const response=await fetch('/signup',{
+                  method: 'POST', 
+                  body: JSON.stringify(data),
+                  headers: {
+                  'Content-Type': 'application/json'
+                  }
+               })
+               const json=await response.json()
+              //  console.log(json)
+              if(json.errors){
+                  emailError.innerText=json.errors.email
+                  passwordError.innerText=json.errors.password
+              }
+              if(json.user){
+                location.assign('/')
+              }
+              
+           } catch (error) {
+              console.log(error)   
+           }
+           
+        })
+      </script>
+      
+</body>
+</html>
