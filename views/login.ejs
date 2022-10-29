@@ -12,17 +12,21 @@
     <title>Login</title>
 </head>
 <body>
-   <button><a href="/signup">Sign up</a></button>
-<form>
-    <h2>Log in</h2>
-    <label for="email">Email</label>
-    <input  type="text" id="email" name="email" required>
-    <div class="error email" id="emailError"></div>
-    <label for="password">Password</label>
-    <input type="password" name="password" id="password" required>
-    <div class="error password" id="passwordError"></div>
-    <button id="button">Log in</button>
-</form>
+   
+<button id="sign-up-redirect"><a href="/signup">Sign up</a></button>
+<div id="form-div">
+   <form>
+      <h2>Log in</h2>
+      <label for="email">Email</label>
+      <input  type="text" id="email" name="email" required>
+      <div class="error email" id="emailError"></div>
+      <label for="password">Password</label>
+      <input type="password" name="password" id="password" required>
+      <div class="error password" id="passwordError"></div>
+      <button id="button">Log in</button>
+  </form>
+</div>
+
 <script>
   const button=document.getElementById('button')
   const emailError=document.getElementById('emailError')
