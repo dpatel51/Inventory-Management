@@ -5,11 +5,28 @@ const orderSchema=new mongoose.Schema({
         type:Number,
         required:true,
         unique:true
-    },
-    product:{
-        type:String,
-        required:true
-    },
+    }, 
+
+    products:[{
+        product:{
+            type:mongoose.Types.ObjectId,
+            ref:'product'
+        },
+        quantity:{
+            type:Number,
+            required:true
+        }
+    }], 
+
+    // products:{
+    //     type:Array,
+    //     required:true
+    // },
+
+    // product:{
+    //     type:String,
+    //     required:true
+    // },
     quantity:{
         type:Number,
         required:true

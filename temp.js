@@ -6,8 +6,9 @@ const authRoutes=require('./routes/authRoutes')
 const bodyParser = require("body-parser")
 
 
-// import product controller
 const productController=require('./controller/productController')
+const supplierController=require('./controller/supplierController')
+const salesController=require('./controller/salesController')
 
 
 
@@ -45,7 +46,26 @@ async function main() {
 
     //delete a product
     app.delete( '/products/:productId', productController.deleteProduct);
+
+
+    //get all suppliers
+    app.get( '/suppliers', supplierController.getSuppliers);
+
+    // add a supplier
+    app.post( '/addsuppliers', supplierController.addSupplier);
+
+    //get a particular supplier using params as id
+
+    app.get( '/suppliers/:supplierId', supplierController.getSupplier);
+
+    //update a supplier
+    app.put( '/suppliers/:supplierId', supplierController.updateSupplier);
+      
+    //delete a supplier
+    app.delete( '/suppliers/:supplierId', supplierController.deleteSupplier);
+
+    // get all sales
+    app.get( '/sales', salesController.getSales);
+
   }
   main();
-
-
