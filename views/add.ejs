@@ -17,12 +17,12 @@
             <h1>Add Product Details</h1>
             <hr>
             <label for="name">Product Name</label>
-            <input type="text" name="name" id="name" placeholder="Product Name">
+            <input type="text" name="name" id="name" class="product-form-input" placeholder="Product Name">
             <label for="price">Price</label>
-            <input type="text" name="price" id="price" placeholder="Price">
+            <input type="text" name="price" id="price" class="product-form-input" placeholder="Price">
             <label for="description">Description</label>
-            <input type="text" name="description" id="description" placeholder="Description">
-            <button type="submit">Add Product</button>
+            <input type="text" name="description" class="product-form-input" id="description" placeholder="Description">
+            <button type="submit" id="product-form-button">Add Product</button>
         </form>
     </div>
 </body>
@@ -32,6 +32,11 @@
     const addProductForm = document.getElementById('product-form');
     addProductForm.addEventListener('submit', (e) => {
         e.preventDefault();
+        const Redirect = () => {
+           setTimeout(() => {
+            window.location.replace("http://localhost:8080/products");
+           }, 2000);
+        }
         const name = document.getElementById('name').value;
         const price = document.getElementById('price').value;
         const description = document.getElementById('description').value;
@@ -50,6 +55,8 @@
         .then(res => res.json())
         .then(data => {
             console.log(data);
+            alert('Product Added Successfully');
+            Redirect();
         })
         .catch(err => {
             console.log(err);
