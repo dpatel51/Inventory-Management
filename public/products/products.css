@@ -47,4 +47,15 @@ padding: 12px 15px;
 #add-product a:hover{
    color: yellow;
 }
+.table-body-update-btn{
+    text-decoration: none;
+    color: white;
+    padding: 5px 5px;
+    background-color: #009879;
+    border-radius: 2px;
+    transition: background-color 0.5s ease-out;
+}
+.table-body-update-btn:hover{
+    background-color: green;
+}
 

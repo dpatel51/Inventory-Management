@@ -9,40 +9,40 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous"> -->
-    <title>Add Product</title>
+    <title>Update Product</title>
 </head>
 <body>
     <div id="add-product-form">
         <form id="product-form">
-            <h1>Add Product Details</h1>
+            <h1>Update Product Details</h1>
             <hr>
             <label for="name">Product Name</label>
-            <input type="text" name="name" id="name" class="product-form-input" placeholder="Product Name">
+            <input type="text" name="name" id="name" class="product-form-input" value="<%= productData.name%>">
             <div class="form-inner-div">
                 <div class="form-nested-inner-div">
                     <label for="pur_price">Purchase Price</label>
-                    <input type="number" name="pur_price" id="pur_price" class="product-form-input" placeholder="Purchase Price">
+                    <input type="number" name="pur_price" id="pur_price" class="product-form-input" value="<%= productData.pur_price%>">
                 </div>
                 <div class="form-nested-inner-div">
                     <label for="sell_price">Selling Price</label>
-                    <input type="number" name="sell_price" id="sell_price" class="product-form-input" placeholder="Selling Price">
+                    <input type="number" name="sell_price" id="sell_price" class="product-form-input" value="<%= productData.sell_price%>">
                 </div>
                 
             </div>
             <div class="form-inner-div">
                 <div class="form-nested-inner-div">
                     <label for="quantity">Quantity</label>
-                    <input type="number" name="quantity" id="quantity" class="product-form-input" placeholder="Quantity">
+                    <input type="number" name="quantity" id="quantity" class="product-form-input" value="<%= productData.quantity%>">
                 </div>
                 <div class="form-nested-inner-div">
                     <label for="low_warn">Low Warning</label>
-                    <input type="number" name="low_warn" id="low_warn" class="product-form-input" placeholder="low Warning">
+                    <input type="number" name="low_warn" id="low_warn" class="product-form-input" value="<%= productData.low_warn%>">
                 </div>
                 
             </div>
             <label for="description">Description</label>
-            <input type="text" name="description" class="product-form-input" id="description" placeholder="Description">
-            <button type="submit" id="product-form-button">Add Product</button>
+            <input type="text" name="description" class="product-form-input" id="description" value="<%= productData.description%>">
+            <button type="submit" id="product-form-button">Update Product</button>
         </form>
     </div>
 </body>
@@ -51,10 +51,7 @@
 <script>
     const addProductForm = document.getElementById('product-form');
     addProductForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        
-            
-          
+        e.preventDefault();   
         const name = document.getElementById('name').value;
         const pur_price = document.getElementById('pur_price').value;
         const sell_price = document.getElementById('sell_price').value;
@@ -70,7 +67,7 @@
             description
         }
         console.log(product);
-        fetch('http://localhost:8080/addproduct', {
+        fetch('http://localhost:8080/update/<%=productData._id%>', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -80,7 +77,7 @@
         .then(res => res.json())
         .then(data => {
             console.log(data);
-            alert('Product Added Successfully');
+            alert('Product Updated Successfully');
             window.location.replace("http://localhost:8080/products");
         })
         .catch(err => {

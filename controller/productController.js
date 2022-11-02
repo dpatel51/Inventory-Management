@@ -22,7 +22,9 @@ module.exports.getProduct=async(req,res)=>{
     
     try{ 
         const productdata =await product.findById(req.params.productId); 
+        console.log(productdata);
         res.json(productdata)
+
     }catch(err){
         console.log({message:err});
         res.json({message:err}) 
@@ -34,8 +36,12 @@ module.exports.addProduct=async(req,res)=>{
 
     const productw=new product({  
         name:req.body.name,
-        price:req.body.price,
+        pur_price:req.body.pur_price,
+        sell_price:req.body.sell_price,
+        quantity:req.body.quantity,
+        low_warn:req.body.low_warn,
         description:req.body.description
+
     })
     console.log(productw);
     try{
@@ -51,12 +57,20 @@ module.exports.getAddProduct=async(req,res)=>{
 }
 
 // update a product //done
+
+
+
 module.exports.updateProduct=async(req,res)=>{
 
     try{
         const updatedProduct=await product.updateOne(
             {_id:req.params.productId},
-            {$set:{name:req.body.name,price:req.body.price,description:req.body.description}}
+            {$set:{name:req.body.name,
+                pur_price:req.body.pur_price,
+                sell_price:req.body.sell_price,
+                quantity:req.body.quantity,
+                low_warn:req.body.low_warn,
+                description:req.body.description}}
         )
         console.log(updatedProduct);
         res.json(updatedProduct)
@@ -65,7 +79,17 @@ module.exports.updateProduct=async(req,res)=>{
         res.json({message:err})
     }
 }
+module.exports.getUpdateProduct=async(req,res)=>{
+    try{ 
+        const productData =await product.findById(req.params.productId); 
+        console.log(productData);
+        res.render('update',{productData})
 
+    }catch(err){
+        console.log({message:err});
+        res.json({message:err}) 
+    } 
+}
 // delete a product //done
 module.exports.deleteProduct=async(req,res)=>{
     try{

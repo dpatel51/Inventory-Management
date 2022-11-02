@@ -14,7 +14,12 @@ const productSchema=new mongoose.Schema({
         type:String,
         required:true
     },
-    price:{
+    pur_price:{
+        type:Number,
+        required:true
+
+    },
+    sell_price:{
         type:Number,
         required:true
 
@@ -22,13 +27,15 @@ const productSchema=new mongoose.Schema({
     description:{
         type:String,
     },
-    image:{
-        type:String,
-    },
-    // quantity:{
-    //     type:Number,
-    //     required:true
-    // }, 
+    quantity:{
+        type:Number,
+        required:true
+    }, 
+    low_warn:{
+        type:Number,
+        required:true
+    }
+   
 })
 
 const Product=mongoose.model('product',productSchema)

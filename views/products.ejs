@@ -12,18 +12,28 @@
             <thead>
             <tr id="product-table-head">
                 <th>Product name</th>
-                <th>Price</th>
+                <th>Purchase Price</th>
+                <th>Selling Price</th>
+                <th>Quantity</th>
+                <th>Low Warning</th>
                 <th>Description</th>
+                <th>Action</th>
                 
             </tr>
         </thead>
             <tbody>
                 <% if(products) {
+                    
                     products.forEach((product)=>{%>
+                      
             <tr id="product-table-body">
                 <td><%= product.name  %></td>
-                <td><%= product.price  %></td>
+                <td><%= product.pur_price  %></td>
+                <td><%= product.sell_price  %></td>
+                <td><%= product.quantity  %></td>
+                <td><%= product.low_warn  %></td>
                 <td><%= product.description  %></td>
+                <td><a class="table-body-update-btn" href="/update/<%= product._id %>">Update</a></td>
             </tr>
             <% })}%>
             </tbody>
@@ -34,6 +44,9 @@
 </div>
 
 
-<link rel="stylesheet" href="/products/products.css">  
+<link rel="stylesheet" href="/products/products.css">
+<script>
+   
+</script>  
 </body>
 </html>

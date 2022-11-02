@@ -12,4 +12,6 @@ router.get('/products',productController.getProducts)
 router.get('/products/:productId',productController.getProduct)
 router.get('/addproduct',productController.getAddProduct)
 router.post('/addproduct',productController.addProduct)
+router.get('/update/:productId',productController.getUpdateProduct)
+router.post('/update/:productId',productController.updateProduct)
 module.exports=router 

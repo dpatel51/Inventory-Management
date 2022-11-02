@@ -18,7 +18,7 @@ body{
    justify-content:flex-start;
    text-align: left;
    width: 400px;
-   height:440px;
+   height:495px;
    padding: 15px;
    background-color: white;
    border-radius: 10px;
@@ -46,4 +46,15 @@ body{
 }
 #product-form-button:hover{
     background-color: green;
+}
+.form-inner-div{
+    display: flex;
+}
+.form-nested-inner-div{
+    display: flex;
+    flex-direction: column;
+    margin-right: 24px;
+}
+#product-table-body a{
+    text-decoration: none;
 }
