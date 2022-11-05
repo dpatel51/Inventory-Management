@@ -29,13 +29,13 @@
                 <% }%>
                 id="dashboard" href="/"><i class="fa-solid fa-store"></i><span >Dashboard</span></a></li>
               
-              <li><a <% if(val.page==="inventory"){ %>
+                <li><a <% if(val.page==="product"){ %>
+                  class="active"
+                  <% }%> id="product" href="/products"><i class="fa-solid fa-pills"></i> <span>Products</span></a></li>
+              <li><a <% if(val.page==="Billing"){ %>
                 class="active"
-                <% }%> id="inventory" href="/"><i class="fa-solid fa-database"></i><span>Inventories</span></a></li>
+                <% }%> id="inventory" href="/billing"><i class="fa-solid fa-receipt"></i><span>Billing</span></a></li>
               
-              <li><a <% if(val.page==="product"){ %>
-                class="active"
-                <% }%> id="product" href="/products"><i class="fa-solid fa-pills"></i> <span>Products</span></a></li>
               <li><a id="sale" href="/"><i class="fa-solid fa-sack-dollar"></i> <span>Sales</span></a></li>
               <li><a id="supplier" href="/"><i class="fa-solid fa-truck-droplet"></i><span>Suppliers</span></a></li>
              

@@ -4,7 +4,7 @@ const cookieParser=require('cookie-parser')
 const app=express();
 const authRoutes=require('./routes/authRoutes')
 const {requireAuth,checkUser}=require('./middleware/authMiddleware')
-
+const product =require('./models/product') 
 //middleware 
 app.use(express.static("public"));
 app.use(express.json()); // help to get the data from request made and convert it to js object and and gives access to use that data
@@ -26,5 +26,18 @@ main();
 app.get('*',checkUser)
 app.get('/',requireAuth,(req,res)=>{
     res.render('home');
+})
+app.get('/billing',async(req,res)=>{
+  try{
+    const products=await product.find(); 
+    if(products){
+    console.log(products);
+    res.locals.products=products
+    }
+    res.render('billing')
+}catch(err){
+    res.json({message:err})
+}
+  
 })
 app.use(authRoutes);
