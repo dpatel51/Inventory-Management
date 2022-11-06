@@ -1,83 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/billing/billing.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/8e541bc5fb.js" crossorigin="anonymous"></script>
     <title>Billing</title>
 </head>
+
 <body>
     <div class="billing-page">
-
-       
-
-       
-        <div  id="bill-form">
-           
-            <div>
+        <div id="bill-form">
+            <div class="bill-form-head">
                 <h1>Products</h1>
                 <button id="add-product"><i class="fa-solid fa-plus"></i> Add Product</button>
             </div>
             <div class="product-input" id="product-input">
-                <div class="product-name-div">
-                    <label for="product-name-0" class="product-name-label">Product Name</label>
-                    <select name="Products" id="prduct-name-0" class="select-input">
-                        <% if(products) {
-                            products.forEach((product)=>{%>
-                        <option value="<%= product.name  %>"><%= product.name  %></option>
-                    <% })}%>
-
-                    <div>
-
-                        <button class="remove-product" id="remove-product">Delete</button>
+                <div class="product-input-box">
+                    <div class="product-name-div">
+                        <label for="product-name" class="product-name-label">Product Name</label>
+        <select name="Products" id="prduct-name"  class="select-input" onchange="setPrice()" >
+                           
+                            <% if(products) { products.forEach((product)=>{%>
+                                <option value="<%= product.name  %>">
+                                    <%= product.name %>
+                                </option>
+                            <% })}%>
+                        </select>
+                    </div>
+                    <div class="product-quantity-div">
+                        <label for="quantity">Qty</label>
+                        <input type="number" id="quantity" class="product-quantity">
+                    </div>
+                    <div class="product-price-div">
+                        <label for="price">Price/Qty</label>
+                        <input type="number" id="price" class="product-price">
+                    </div>
+                    <div class="product-amount-div">
+                        <label for="individual-amount">Total</label>
+                        <input type="number" id="individual-amount" class="individual-amount">
                     </div>
                 </div>
-                
-                
             </div>
-        </form>
-       
-        <div class="amount-date">
-            <div class="total-amount">
-                <h3>Total Amount</h3>
-                <h4>Rs 2000</h4>
-            </div>
-            <!-- <div class="bill-date">
-                <h3>Date</h3>
-                <h3>5 Nov 2022</h3>
-            </div>
-            <div class="bill-time">
-                <h3>bill-time</h3>
-                <h3>6:00:12 am</h3>
-            </div> -->
         </div>
-
     </div>
     <script>
-        const addProduct=document.getElementById('add-product')
-        addProduct.addEventListener('click',(e)=>{
+        const addProduct = document.getElementById('add-product')
+        function setPrice() {
+            
+        }
+        
+       
+        addProduct.addEventListener('click', (e) => {
             e.preventDefault()
-           console.log("Adding Product...")
-           let html=`
-                    <label for="product-name" class="product-name-label">Product Name</label>
-                    <select name="Products" id="prduct-name" class="select-input">
-                        <% if(products) {
-                        products.forEach((product)=>{%>
-                        <option value="<%= product.name  %>"><%= product.name  %></option> 
-                    <% })}%>
-                    <button class="remove-product" id="remove-product">Delete</button>
+            let html = `
+                    <div class="product-name-div">
+                        <label for="product-name" class="product-name-label">Product Name</label>
+                        <select name="Products" id="prduct-name" class="select-input" onchange="setPrice('<%products%>')">
+                           
+                            <% if(products) { products.forEach((product)=>{%>
+                                <option value="<%= product.name  %>">
+                                    <%= product.name %>
+                                </option>
+                            <% })}%>
+                        </select>
+                    </div>
+                    <div class="product-quantity-div">
+                        <label for="quantity">Qty</label>
+                        <input type="number" id="quantity" class="product-quantity">
+                    </div>
+                    <div class="product-price-div">
+                        <label for="price">Price/Qty</label>
+                        <input type="number" id="price" class="product-price">
+                    </div>
+                    <div class="product-amount-div">
+                        <label for="individual-amount">Total</label>
+                        <input type="number" id="individual-amount" class="individual-amount">
+                    </div>
                 `
-                let div=document.createElement('div')
-                div.innerHTML=html;
-                div.classList.add('product-name-div')
-                const productInput=document.getElementById('product-input')
-                productInput.appendChild(div);
+            let div = document.createElement('div')
+            div.innerHTML = html;
+            div.classList.add('product-input-box')
+            const productInput = document.getElementById('product-input')
+            productInput.appendChild(div);
+            const selectInput=document.getElementsByClassName('select-input')
+            const productPrice=document.getElementsByClassName('product-price')
+            console.log(selectInput)
+            
+            // for(let i=0;i<selectInput.length;i++){
+            //     selectInput[i].addEventListener('change',(e)=>{
+            //         console.log(e.target.value)
+
+            //     })
+            // }
+
         })
 
     </script>
 </body>
+
 </html>

@@ -1,0 +1,31 @@
+.product-input{
+    display: flex;
+    flex-direction: column;
+}
+.bill-form-head{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+.product-input-box{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.product-name-div{
+    display: flex;
+    flex-direction: column;
+}
+.product-quantity-div{
+    display: flex;
+    flex-direction: column;
+}
+.product-price-div{
+    display: flex;
+    flex-direction: column;
+}
+.product-amount-div{
+    display: flex;
+    flex-direction: column;
+}
