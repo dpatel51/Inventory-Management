@@ -2,6 +2,7 @@ const {Router} = require('express')
 const router=Router();
 const authController=require('../controller/authController')
 const productController=require('../controller/productController')
+const salesController=require('../controller/salesController')
 
 router.get('/signup',authController.signup_get)
 router.post('/signup',authController.signup_post)
@@ -14,4 +15,5 @@ router.get('/addproduct',productController.getAddProduct)
 router.post('/addproduct',productController.addProduct)
 router.get('/update/:productId',productController.getUpdateProduct)
 router.post('/update/:productId',productController.updateProduct)
+router.post('/addSale',salesController.addSale)
 module.exports=router 

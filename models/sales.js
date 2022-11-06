@@ -18,6 +18,10 @@ const salesSchema=new mongoose.Schema({
             required:true       
         }
     }],
+    totalBillAmount:{
+        type:Number,
+        required:true
+    },
     date:{
         type:Date,
         default:Date.now

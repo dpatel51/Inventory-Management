@@ -38,6 +38,16 @@ app.get('/billing',async(req,res)=>{
 }catch(err){
     res.json({message:err})
 }
-  
+
 })
+
+app.get('/productList',async(req,res)=>{
+  try{
+    const products=await product.find(); 
+    res.json(products)
+}catch(err){
+    res.json({message:err})
+}
+})
+
 app.use(authRoutes);

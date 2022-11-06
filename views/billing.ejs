@@ -14,8 +14,12 @@
 </head>
 
 <body>
-    <div class="billing-page">
-        <div id="bill-form">
+    <div class="billing-page" >
+        <div id="bill-form"  >
+            <!-- <div class="customer-name">
+                <label for="c-name">Customer Name</label>
+                <input type="text" id="c-name" required>
+            </div> -->
             <div class="bill-form-head">
                 <h1>Products</h1>
                 <button id="add-product"><i class="fa-solid fa-plus"></i> Add Product</button>
@@ -24,8 +28,8 @@
                 <div class="product-input-box">
                     <div class="product-name-div">
                         <label for="product-name" class="product-name-label">Product Name</label>
-        <select name="Products" id="prduct-name"  class="select-input" onchange="setPrice()" >
-                           
+        <select name="Products" id="prduct-name"  class="select-input" >
+                           <option></option>
                             <% if(products) { products.forEach((product)=>{%>
                                 <option value="<%= product.name  %>">
                                     <%= product.name %>
@@ -48,21 +52,46 @@
                 </div>
             </div>
         </div>
+        <div class="bill-bottom">
+            <div class="total-amount-button">
+                <button id="make-total-button">Make total</button>
+            </div>
+        <div class="total-bill-amount" style="display: none;">
+            <label for="total-bill-amount">Total Amount</label>
+            <input type="number" id="total-bill-amount" name="total-bill-amount" value=0>
+        </div>
+        </div>
+        <div id="save-bill-button">
+            <button id="save-bill">Save Bill</button>
+        </div>
+        
     </div>
+    
     <script>
         const addProduct = document.getElementById('add-product')
-        function setPrice() {
-            
-        }
-        
-       
+        const selectInput=document.getElementsByClassName('select-input')
+        const productPrice=document.getElementsByClassName('product-price')
+        const productQuantity=document.getElementsByClassName('product-quantity')
+        const individualAmount=document.getElementsByClassName('individual-amount')
+        const totalBillAmount=document.getElementById('total-bill-amount')
+        const makeTotalButton=document.getElementById('make-total-button')
+        let productList;
+       const fetchProduct=async()=>{
+            const response=await fetch('/productList')
+            const json=await response.json();
+            // console.log(json)
+            productList=json;
+            console.log(productList)
+       }
+       fetchProduct();
+
         addProduct.addEventListener('click', (e) => {
             e.preventDefault()
             let html = `
                     <div class="product-name-div">
                         <label for="product-name" class="product-name-label">Product Name</label>
-                        <select name="Products" id="prduct-name" class="select-input" onchange="setPrice('<%products%>')">
-                           
+                        <select name="Products" id="prduct-name" class="select-input" >
+                            <option></option>
                             <% if(products) { products.forEach((product)=>{%>
                                 <option value="<%= product.name  %>">
                                     <%= product.name %>
@@ -88,18 +117,82 @@
             div.classList.add('product-input-box')
             const productInput = document.getElementById('product-input')
             productInput.appendChild(div);
-            const selectInput=document.getElementsByClassName('select-input')
-            const productPrice=document.getElementsByClassName('product-price')
             console.log(selectInput)
-            
-            // for(let i=0;i<selectInput.length;i++){
-            //     selectInput[i].addEventListener('change',(e)=>{
-            //         console.log(e.target.value)
-
-            //     })
-            // }
-
+            for(let i=0;i<selectInput.length;i++){
+                selectInput[i].addEventListener('change',(e)=>{
+                    
+                  productList.find((product)=>{
+                      if(product.name===e.target.value){
+                          productPrice[i].value=product.sell_price
+                      }
+                  })
+                
+                })
+            }
+            for(let i=0;i<productQuantity.length;i++){
+                productQuantity[i].addEventListener('change',(e)=>{
+                    individualAmount[i].value=productPrice[i].value*e.target.value
+                })
+            }
         })
+
+        
+        for(let i=0;i<selectInput.length;i++){
+                selectInput[i].addEventListener('change',(e)=>{  
+                  productList.find((product)=>{
+                      if(product.name===e.target.value){
+                          productPrice[i].value=product.sell_price
+                      }
+                  })
+                })
+            }
+            for(let i=0;i<productQuantity.length;i++){
+                productQuantity[i].addEventListener('change',(e)=>{
+                    individualAmount[i].value=productPrice[i].value*e.target.value
+                })
+            }
+        
+        makeTotalButton.addEventListener('click',(e)=>{
+            e.preventDefault()
+            let total=0;
+            for(let i=0;i<individualAmount.length;i++){
+                total+=Number(individualAmount[i].value)
+            }
+            totalBillAmount.value=total;
+            const totalBillAmountDiv=document.querySelector('.total-bill-amount')
+            totalBillAmountDiv.style.display='block'
+            
+        })
+
+        // saving bill
+        const saveBillButton=document.getElementById('save-bill')
+        saveBillButton.addEventListener('click',(e)=>{
+            e.preventDefault()
+            const billData={
+                totalBillAmount:totalBillAmount.value,
+                products:[]
+            }
+            for(let i=0;i<selectInput.length;i++){
+                billData.products.push({
+                    id:productList.find((product)=>product.name===selectInput[i].value)._id,
+                    name:selectInput[i].value,
+                    quantity:productQuantity[i].value,
+                    // price:productPrice[i].value,
+                    // total:individualAmount[i].value
+                })
+            }
+            console.log(billData)
+            fetch('/addSale',{
+                method:'POST',
+                headers:{
+                    'Content-Type':'application/json'
+                },
+                body:JSON.stringify(billData)
+            }).then((res)=>{
+                console.log(res)
+            })
+        })
+
 
     </script>
 </body>
