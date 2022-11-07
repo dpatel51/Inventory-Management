@@ -1,6 +1,19 @@
+body{
+    background-color:  #009879; 
+}
 .product-input{
     display: flex;
     flex-direction: column;
+}
+.billing-page{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.bill-form{
+    border: 1px solid black;
+    
 }
 .bill-form-head{
     display: flex;
