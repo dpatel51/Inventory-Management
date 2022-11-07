@@ -1,5 +1,18 @@
 body{
     background-color:  #009879; 
+    font-family: 'Ubuntu', sans-serif;
+}
+input,select{
+    padding: 5px 5px;
+    border: 1px solid rgb(170, 168, 168);
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+input:focus,select:focus{
+    outline: none;
+}
+label{
+    margin: 2px 2px;
 }
 .product-input{
     display: flex;
@@ -10,10 +23,13 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: 100vh;
 }
-.bill-form{
-    border: 1px solid black;
-    
+#bill-form{
+    width: 70vw;
+    background-color:white;
+    border-radius:8px ;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 .bill-form-head{
     display: flex;
@@ -41,4 +57,72 @@ body{
 .product-amount-div{
     display: flex;
     flex-direction: column;
+}
+#add-product{
+    background-color: #009879;
+    color: white;
+    padding: 9px 5px;
+    border:none;
+    border-radius:5px; 
+    font-weight: bold; 
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    transition: background-color 0.5s ease-in,
+    color 0.5s ease-in;  
+}
+#make-total-button{
+    background-color: #009879;
+    color: white;
+    padding: 7px 5px; 
+    border:none;
+    border-radius:5px;
+    font-weight: bold;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    transition: background-color 0.5s ease-in,
+    color 0.5s ease-in; 
+
+}
+#save-bill{
+    background-color: #009879;
+    color: white;
+    padding: 7px 5px;
+    border:none;
+    border-radius:5px; 
+    font-weight: bold; 
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    transition: background-color 0.5s ease-in,
+    color 0.5s ease-in;   
+}
+#save-bill:hover,#make-total-button:hover,#add-product:hover{
+    color: black;
+}
+.bill-bottom{
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    margin: 15px 82px;
+    padding: 7px 0;
+}
+.product-name-div select{
+    display: inline-block;
+    width: 139px;
+}
+.total-bill-amount{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.total-bill-amount input{
+   padding-right: 0;
+}
+
+#save-bill-button{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 21px;
+    margin-bottom: 21px;
+}
+#save-bill{
+    width: 8%;
 }

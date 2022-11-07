@@ -52,19 +52,21 @@
                 </div>
             </div>
             <div class="bill-bottom">
-                <div class="total-amount-button">
+                <div class="total-amount-button" >
                     <button id="make-total-button">Make total</button>
                 </div>
             <div class="total-bill-amount" style="display: none;">
-                <label for="total-bill-amount">Total Amount</label>
+                <label for="total-bill-amount">Total Amount :</label>
                 <input type="number" id="total-bill-amount" name="total-bill-amount" value=0>
             </div>
             </div>
+            <hr>
+            <div id="save-bill-button">
+                <button id="save-bill">Save Bill</button>
+            </div>
         </div>
      
-        <div id="save-bill-button">
-            <button id="save-bill">Save Bill</button>
-        </div>
+       
         
     </div>
     
@@ -76,6 +78,7 @@
         const individualAmount=document.getElementsByClassName('individual-amount')
         const totalBillAmount=document.getElementById('total-bill-amount')
         const makeTotalButton=document.getElementById('make-total-button')
+        let totalAmountButton=document.getElementsByClassName('total-amount-button');
         let productList;
        const fetchProduct=async()=>{
             const response=await fetch('/productList')
@@ -115,6 +118,7 @@
                 `
             let div = document.createElement('div')
             div.innerHTML = html;
+            // totalAmountButton.style.display='block';
             div.classList.add('product-input-box')
             const productInput = document.getElementById('product-input')
             productInput.appendChild(div);
@@ -162,6 +166,7 @@
             totalBillAmount.value=total;
             const totalBillAmountDiv=document.querySelector('.total-bill-amount')
             totalBillAmountDiv.style.display='block'
+            // totalAmountButton.style.display='none'
             
         })
 
