@@ -79,7 +79,7 @@ module.exports.addSale = async (req, res) => {
     // update the totalBillAmount
 
     salesData.totalBillAmount =
-      salesData.totalBillAmount + req.body.totalBillAmount;
+      Number(salesData.totalBillAmount) + Number(req.body.totalBillAmount);
 
     try {
       const savedSale = await salesData.save();

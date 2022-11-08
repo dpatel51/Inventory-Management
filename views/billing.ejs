@@ -172,30 +172,34 @@
 
         // saving bill
         const saveBillButton=document.getElementById('save-bill')
-        // saveBillButton.addEventListener('click',(e)=>{
-        //     e.preventDefault()
-        //     const billData={
-        //         totalBillAmount:totalBillAmount.value,
-        //         products:[]
-        //     }
-        //     for(let i=0;i<selectInput.length;i++){
-        //         billData.products.push({
-        //             product:productList.find((product)=>product.name===selectInput[i].value),
-        //             quantity:productQuantity[i].value,
-                  
-        //         })
-        //     }
-        //     console.log(billData)
-        //     fetch('/addSale',{
-        //         method:'POST',
-        //         headers:{
-        //             'Content-Type':'application/json'
-        //         },
-        //         body:JSON.stringify(billData)
-        //     }).then((res)=>{
-        //         console.log(res)
-        //     })
-        // })
+        saveBillButton.addEventListener('click',(e)=>{
+            e.preventDefault()
+            const billData={
+                totalBillAmount:totalBillAmount.value,
+                products:[],
+                date:new Date()
+            }
+            for(let i=0;i<selectInput.length;i++){
+                billData.products.push({
+                    _id:productList.find((product)=>product.name===selectInput[i].value)._id,
+                    quantity:productQuantity[i].value,
+                   
+                })
+            }
+            console.log(billData)
+            fetch('/addSale',{
+                method:'POST',
+                headers:{
+                    'Content-Type':'application/json'
+                },
+                body:JSON.stringify(billData)
+            }).then((res)=>{
+                // console.log(res)
+                res.json()
+            }).then((data)=>{
+                console.log(data)
+            })
+        })
 
 
     </script>
