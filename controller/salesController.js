@@ -1,5 +1,5 @@
 const User = require("../models/User");
-
+const Product = require("../models/product");
 const sales = require("../models/sales");
 
 // methods for managing sales
@@ -35,6 +35,20 @@ module.exports.getSale = async (req, res) => {
 // add a sale
 
 module.exports.addSale = async (req, res) => {
+
+  console.log(req.body, "req.body");
+
+  for (const soldProduct of req.body.products) {
+
+    console.log(soldProduct, 'soldProduct');
+    const product = await Product.findById(soldProduct._id);
+
+    product.quantity -= soldProduct.quantity;
+
+     product.save();
+  }
+
+
   // date already exists
 
   req.body.date = new Date();
@@ -78,8 +92,10 @@ module.exports.addSale = async (req, res) => {
 
     // update the totalBillAmount
 
-    salesData.totalBillAmount =
-      Number(salesData.totalBillAmount) + Number(req.body.totalBillAmount);
+    // salesData.totalBillAmount =
+    //   salesData.totalBillAmount + req.body.totalBillAmount;
+
+    salesData.totalBillAmount = req.body.totalBillAmount;
 
     try {
       const savedSale = await salesData.save();

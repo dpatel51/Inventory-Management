@@ -70,5 +70,9 @@ async function main() {
     // add a sale
     app.post( '/addsales', salesController.addSale);
 
+
+    // get low stock products
+    app.get( '/lowstock', productController.getLowStock);
+
   }
   main();

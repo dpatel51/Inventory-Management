@@ -100,3 +100,19 @@ module.exports.deleteProduct=async(req,res)=>{
     }
 }
 
+
+// get low stock products //done
+module.exports.getLowStock=async(req,res)=>{
+    try{ 
+        const lowStockProducts=await product.find({$expr:{$lte:["$quantity", "$low_warn"]}});
+
+        console.log(lowStockProducts);
+        
+        res.json(lowStockProducts)
+
+        // res.render('lowStock',{lowStockProducts})
+
+    }catch(err){
+        res.json({message:err})
+    }
+}
