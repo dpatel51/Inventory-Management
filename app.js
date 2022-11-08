@@ -29,7 +29,8 @@ app.get('/',requireAuth,(req,res)=>{
 })
 app.get('/billing',async(req,res)=>{
   try{
-    const products=await product.find(); 
+
+    const products=await product.find({quantity: { $ne: 0 }}); 
     if(products){
     console.log(products);
     res.locals.products=products
