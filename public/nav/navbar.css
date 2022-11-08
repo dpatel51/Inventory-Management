@@ -3,6 +3,9 @@
     padding: 0;
     font-family: 'Ubuntu', sans-serif;
 }
+i{
+    margin-right: 5px;
+}
 .nav{
     display: flex;
     justify-content: space-between;
@@ -26,6 +29,40 @@
     align-items: center;
     padding-right:20px ;
     
+}
+#logout-tag{
+ padding: 4px;
+ background-color: #009879;
+ color: black;
+ text-transform: capitalize;
+ border-radius: 4px;
+ transition: color 0.5s ease-in;
+}
+#nav-user-name{
+    text-transform: capitalize;
+    font-size: 1rem;
+    color: black;
+    padding: 2px;
+    background-color: #009879;
+    margin: 0 10px;
+    transition: color 0.5s ease-in;
+}
+#nav-user-name:hover{
+    color:yellow;
+   
+}
+#logout-tag:hover{
+ color:yellow;
+}
+#nav-alert-icon{
+    cursor: pointer;
+    padding: 2px;
+    background-color: #009879;
+    color: black;
+    transition:color 0.5s ease-in ;
+}
+#nav-alert-icon :hover{
+    color: yellow;
 }
 #nav-button{
    border: none;

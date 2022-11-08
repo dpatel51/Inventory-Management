@@ -1,0 +1,44 @@
+<%- include('partials/header',{val:{title:'Alerts',page:'alerts'}}) -%>
+<div class="ml-257 mt-72">
+    <div class="page-head">
+        <h1><i class="fa-solid fa-pills"></i> Alerts</h1>
+    </div>
+   <!-- <div id="add-product">
+    <button><a href="/addproduct"><i class="fa-solid fa-plus"></i>  Add Product</a></button>
+   </div> -->
+
+
+        <table id="product-table">
+            <thead>
+            <tr id="product-table-head">
+                <th>Product name</th>
+                <th>Quantity</th>
+                <th>Low Warning</th>
+                <th>Description</th>   
+            </tr>
+        </thead>
+            <tbody>
+                <% if(lowStockProducts) {
+                    
+                    lowStockProducts.forEach((product)=>{%>
+                      
+            <tr id="product-table-body">
+                <td><%= product.name  %></td>
+                <td><%= product.quantity  %></td>
+                <td><%= product.low_warn  %></td>
+                <td><%= product.description  %></td>
+                
+            </tr>
+            <% })}%>
+            </tbody>
+
+        </table>
+    
+
+</div>
+<link rel="stylesheet" href="/alerts/alerts.css">
+<script>
+   
+</script>  
+</body>
+</html>

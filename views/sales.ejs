@@ -1,0 +1,121 @@
+<%- include('partials/header',{val:{title:'Sales',page:'sales'}}) -%>
+<div class="ml-257 mt-72">
+    <div class="page-head">
+        <h1><i class="fa-solid fa-pills"></i> Sales</h1>
+    </div>
+    <div id="date-picker">
+        <label for="filter-date"></label>
+        <input type="date" id="filter-date" >
+    </div>
+   <!-- <div id="add-product">
+    <button><a href="/addproduct"><i class="fa-solid fa-plus"></i>  Add Product</a></button>
+   </div> -->
+
+            <!-- div to display the sales -->
+            <div class="sales-div">
+                <div class="sales-div-head">
+                    <div class="name-head">
+                        <h3>Product Name</h3>
+                    </div>
+                    <div class="name-head">
+                        <h3>Quantity</h3>
+                    </div>
+                    <div class="name-head">
+                        <h3>Amount</h3>
+                    </div>   
+                    <div class="name-head">
+                        <h3>Date</h3>
+                    </div>   
+                </div>
+                <hr>
+                <div id="sales-div-data">    
+                </div>  
+            </div>
+</div>
+<link rel="stylesheet" href="/sales/sales.css">
+<script>
+   
+   let productList;
+       const fetchProduct=async()=>{
+            const response=await fetch('/productList')
+            const json=await response.json();
+            // console.log(json)
+            productList=json;
+            console.log(productList)
+            fetchSales();
+       }
+       fetchProduct();
+       const saleDivData=document.getElementById('sales-div-data');
+       let html=``
+       // get All sales data
+       let salesData;
+       const fetchSales=async()=>{
+        const response=await fetch('/salesData')
+        const json=await response.json();
+        console.log(json)
+        salesData=json;
+        salesData.forEach(element => {
+            const date=element.date.substring(0,10);
+        element.products.forEach(product => {
+          productList.find((item)=>{
+              if(item._id==product._id){
+                let amount=product.quantity*item.sell_price;
+                  html+=`
+                  <div class="sales-data-row">
+                    <div class="sold-product-name">
+                        <h4>${item.name}</h4>
+                    </div>
+                    <div class="sold-product-quantity">
+                        <h4>${product.quantity}</h4>
+                    </div>
+                    <div class="sold-product-amount">
+                        <h4>₹ ${amount}</h4>
+                    </div>
+                    <div class="sold-product-date">
+                        <h4>${date}</h4>
+                    </div>
+                   
+                </div>
+                
+                  `
+        }})
+       })});
+       let div = document.createElement('div')
+        div.innerHTML = html;
+       saleDivData.appendChild(div);
+       }
+       const searchDate=document.getElementById('filter-date');
+
+
+
+       searchDate.addEventListener('input',(e)=>{
+        console.log(e.target.value)
+        const date=e.target.value
+        console.log(typeof date)
+       
+
+            const dataRow=document.getElementsByClassName('sales-data-row');
+            console.log(dataRow)
+            Array.from(dataRow).forEach((element)=>{
+                element.style.display='flex';
+                const dateElement=element.getElementsByClassName('sold-product-date')[0].innerText;
+                console.log(dateElement)
+                if(dateElement==date){
+                    element.style.display='flex';
+                }
+                else{
+                    element.style.display='none';
+                }
+            })
+        
+      
+       })
+       
+
+       
+
+
+
+</script>  
+</body>
+</html>

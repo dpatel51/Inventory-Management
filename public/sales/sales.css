@@ -1,0 +1,79 @@
+.sales-div{
+   width: 65%;
+   margin-top: 130px;
+   margin-left: 20px;
+   
+}
+.sales-div-head{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 5px;
+}
+#sales-div-data{
+
+}
+.sales-data-row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+.sold-product-name{
+    width:210px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.sold-product-quantity{
+    width:210px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.sold-product-amount{
+    width:210px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.sold-product-date{
+    width:210px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.name-head{
+    width:210px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#date-picker{
+    margin-top: 20px;
+    width: 65%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 30px;
+    padding: 5px;
+    
+}
+#date-picker input{
+    padding: 8px 5px;
+    display: inline-block;
+    width: 125px;
+    background-color: #009879;
+    border-radius: 3px;
+    border: none;
+    color: white;
+    font-size: 1rem;
+}
+#date-picker input:focus{
+    outline: none;
+
+}
