@@ -15,8 +15,14 @@ router.get('/addproduct',productController.getAddProduct)
 router.post('/addproduct',productController.addProduct)
 router.get('/update/:productId',productController.getUpdateProduct)
 router.post('/update/:productId',productController.updateProduct)
+router.get('/getProductsCount',productController.getProductsCount)
 router.post('/addSale',salesController.addSale)
 router.get('/alerts',productController.getLowStock)
 router.get('/sales',salesController.getSales)
 router.get('/salesData',salesController.getSalesDataOnly)
+router.get('/getTodaysSales',salesController.getTodaysSales)
+router.get('/getLowStockCount',productController.getLowStockCount)
+router.get('/getOutOfStock',productController.getOutOfStock)
+
+
 module.exports=router 

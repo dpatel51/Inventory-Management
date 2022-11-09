@@ -148,5 +148,23 @@ module.exports.addSale = async (req, res) => {
   }
 };
 
+// get today's sales
+module.exports.getTodaysSales = async (req, res) => {
+  try {
+    const today = new Date();
+    today.setUTCHours(0, 0, 0, 0);
+    const salesdata = await sales.find({ date: today });
+    if (salesdata) {
+      console.log(salesdata);
+    }
+    res.json(salesdata);
+  } catch (err) {
+    res.json({ message: err.message });
+  }
+};
+
+
+
+
 
 //ignore this comment

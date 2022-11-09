@@ -10,6 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/8e541bc5fb.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
     <title><%= val.title %></title>
 </head>
 <body>
@@ -47,7 +48,7 @@
               <li><a <% if(val.page==="sales"){ %>
                 class="active"
                 <% }%>id="sale" href="/sales"><i class="fa-solid fa-sack-dollar"></i> <span>Sales</span></a></li>
-              <li><a id="supplier" href="/suppliers"><i class="fa-solid fa-truck-droplet"></i><span>Suppliers</span></a></li>
+              <!-- <li><a id="supplier" href="/suppliers"><i class="fa-solid fa-truck-droplet"></i><span>Suppliers</span></a></li> -->
              
        </ul>
     </div>

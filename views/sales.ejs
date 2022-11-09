@@ -28,7 +28,7 @@
                     </div>   
                 </div>
                 <hr>
-                <div id="sales-div-data">    
+                <div id="sales-div-data" style="Overflow-y:scroll; height: 430px;">    
                 </div>  
             </div>
 </div>
@@ -92,20 +92,21 @@
         console.log(e.target.value)
         const date=e.target.value
         console.log(typeof date)
-       
-
             const dataRow=document.getElementsByClassName('sales-data-row');
             console.log(dataRow)
             Array.from(dataRow).forEach((element)=>{
                 element.style.display='flex';
                 const dateElement=element.getElementsByClassName('sold-product-date')[0].innerText;
                 console.log(dateElement)
-                if(dateElement==date){
+                if(date){
+                    if(dateElement==date){
                     element.style.display='flex';
                 }
                 else{
                     element.style.display='none';
                 }
+                }
+               
             })
         
       

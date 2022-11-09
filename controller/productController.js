@@ -17,6 +17,21 @@ module.exports.getProducts=async(req,res)=>{
     }
 }
 
+
+// get all products count
+module.exports.getProductsCount=async(req,res)=>{
+    try{
+        const products=await product.find(); 
+        res.json(products)
+    }catch(err){
+        res.json({message:err})
+    }
+}
+
+
+
+
+
 // get a specific product //done
 module.exports.getProduct=async(req,res)=>{
     
@@ -124,7 +139,7 @@ module.exports.getLowStockCount=async(req,res)=>{
 
         console.log(lowStockProducts.length);
         
-        res.json(lowStockProducts.length)
+        res.json({count:lowStockProducts.length})
 
         // res.render('lowStock',{lowStockProducts})
 
@@ -132,3 +147,20 @@ module.exports.getLowStockCount=async(req,res)=>{
         res.json({message:err})
     }
 }
+
+// get out of stock products
+module.exports.getOutOfStock=async(req,res)=>{
+    try{ 
+        const outOfStockProducts=await product.find({quantity:0});
+
+        console.log(outOfStockProducts);
+        
+        
+
+       res.json({count:outOfStockProducts.length})
+
+    }catch(err){
+        res.json({message:err})
+    }
+}
+

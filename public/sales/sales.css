@@ -1,6 +1,6 @@
 .sales-div{
-   width: 65%;
-   margin-top: 130px;
+   width: 75%;
+   margin-top: 40px;
    margin-left: 20px;
    
 }
@@ -55,12 +55,13 @@
 }
 #date-picker{
     margin-top: 20px;
-    width: 65%;
+    width: 90%;
     display: flex;
     justify-content: flex-end;
     align-items: center;
     height: 30px;
     padding: 5px;
+    
     
 }
 #date-picker input{
