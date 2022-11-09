@@ -74,5 +74,8 @@ async function main() {
     // get low stock products
     app.get( '/lowstock', productController.getLowStock);
 
+    // get low stock count
+    app.get( '/lowstockcount', productController.getLowStockCount);
+
   }
   main();

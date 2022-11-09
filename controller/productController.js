@@ -116,3 +116,19 @@ module.exports.getLowStock=async(req,res)=>{
         res.json({message:err})
     }
 }
+
+// get low stock count
+module.exports.getLowStockCount=async(req,res)=>{
+    try{ 
+        const lowStockProducts=await product.find({$expr:{$lte:["$quantity", "$low_warn"]}});
+
+        console.log(lowStockProducts.length);
+        
+        res.json(lowStockProducts.length)
+
+        // res.render('lowStock',{lowStockProducts})
+
+    }catch(err){
+        res.json({message:err})
+    }
+}
