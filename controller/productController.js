@@ -108,9 +108,9 @@ module.exports.getLowStock=async(req,res)=>{
 
         console.log(lowStockProducts);
         
-        res.json(lowStockProducts)
+        
 
-        // res.render('lowStock',{lowStockProducts})
+        res.render('alerts',{lowStockProducts})
 
     }catch(err){
         res.json({message:err})
