@@ -23,8 +23,12 @@ async function main() {
 }
 main();
 
-app.get('*',checkUser)
-app.get('/',requireAuth,(req,res)=>{
+// app.get('*',checkUser)
+// app.get('/',requireAuth,(req,res)=>{
+//     res.render('home');
+// })
+
+app.get('/',(req,res)=>{
     res.render('home');
 })
 app.get('/billing',async(req,res)=>{
