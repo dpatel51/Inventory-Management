@@ -1,13 +1,8 @@
 const mongoose=require('mongoose')
 
-
 // sales 
 const salesSchema=new mongoose.Schema({
-    // id:{
-    //     type:Number,
-    //     required:true,
-    //     unique:true
-    // },
+     
     products:[{
         product:{
             type:mongoose.Types.ObjectId,

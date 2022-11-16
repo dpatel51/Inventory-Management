@@ -73,12 +73,19 @@
         outOfStock=(json.count)?json.count:0;
         fetchTodaySell();
     }
+
     const fetchTodaySell=async()=>{
         const response=await fetch('/getTodaysSales');
         const json=await response.json();
         console.log("today sell");
-        const amount=json[0].totalBillAmount;
-        todaySell.innerText=(amount)?amount:0;
+        if(json.length>0 && json[0].totalBillAmount != null){
+            console.log(json);
+            todaySell.innerText=json[0].totalBillAmount;
+        }
+        else{
+            todaySell.innerText=0;
+        } 
+        
         fetchProductCount();
     }
     const fetchProductCount=async()=>{

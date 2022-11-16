@@ -98,7 +98,9 @@ module.exports.addSale = async (req, res) => {
 
         // add the quantity
 
-        prod.quantity += product.quantity;
+        // prod.quantity += product.quantity;
+
+        prod.quantity = Number(prod.quantity) + Number(product.quantity);
 
         console.log(prod.quantity, "ccc");
         console.log(salesData.products, "ddd");

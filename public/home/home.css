@@ -79,6 +79,10 @@
     color: #ff0000;
     background-color: #e38b8b;
 }
+.div-warning{
+    color: orange;
+    background-color: rgb(244, 244, 137);
+}
 .div-safe{
     color: #009879;
     background-color: #a3e3d7;

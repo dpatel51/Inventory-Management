@@ -1,14 +1,6 @@
 const mongoose=require('mongoose')
 
-
 const productSchema=new mongoose.Schema({
-
-    // _id:{
-    //     type:mongoose.Types.ObjectId,
-    //     required:true,
-    //     unique:true,
-    //     default: new mongoose.Types.ObjectId()
-    // },
 
     name:{
         type:String,

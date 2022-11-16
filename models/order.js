@@ -17,16 +17,7 @@ const orderSchema=new mongoose.Schema({
             required:true
         }
     }], 
-
-    // products:{
-    //     type:Array,
-    //     required:true
-    // },
-
-    // product:{
-    //     type:String,
-    //     required:true
-    // }, 
+ 
     price:{
         type:Number,
         required:true
