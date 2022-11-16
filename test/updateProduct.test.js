@@ -7,7 +7,7 @@ chai.use(chaiHttp);
 
 
 describe("validate update product:", function async() { 
-    it("should return success message", function async(done) {
+    it("Should return success message", function async(done) {
         chai
         .request(app)
         .post("/update/635ac32c95b4a7e11596b9b4")
@@ -27,7 +27,7 @@ describe("validate update product:", function async() {
         });
     });
 
-    it("should be acknowledged", function async(done) {
+    it("Should be acknowledged", function async(done) {
         chai
         .request(app)
         .post("/update/635ac32c95b4a7e11596b9b4")
@@ -47,7 +47,7 @@ describe("validate update product:", function async() {
     });
 
 
-    it("should have no errors", function async(done) {
+    it("Should have no errors", function async(done) {
         chai
         .request(app)
         .post("/update/635ac32c95b4a7e11596b9b4")

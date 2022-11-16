@@ -6,8 +6,8 @@ const app = require("../app");
 chai.use(chaiHttp);
 
 
-describe("Validate get all sales:", function async() {
-    it("should return success message", function async(done) {
+describe("Validate today's sales:", function async() {
+    it("Should return success message", function async(done) {
       chai
         .request(app)
         .get("/getTodaysSales")
@@ -19,7 +19,7 @@ describe("Validate get all sales:", function async() {
         });
     });
   
-    it("should be an array of objects", function async(done) {
+    it("Should be an array of objects", function async(done) {
       chai
         .request(app)
         .get("/getTodaysSales")
@@ -30,7 +30,7 @@ describe("Validate get all sales:", function async() {
         });
     });
   
-    it("should have no errors", function async(done) {
+    it("Should have no errors", function async(done) {
       chai
         .request(app)
         .get("/getTodaysSales")

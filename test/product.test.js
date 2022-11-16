@@ -7,7 +7,7 @@ chai.use(chaiHttp);
 
 describe("Validate get all products:", function async() {
 
-  it("should return success message", function async(done) {
+  it("Should return success message", function async(done) {
     chai
       .request(app)
       .get("/productList")
@@ -20,7 +20,7 @@ describe("Validate get all products:", function async() {
       });
   });
 
-  it("should be an array of objects", function async(done) {
+  it("Should be an array of objects", function async(done) {
     chai
       .request(app)
       .get("/productList")
@@ -32,7 +32,7 @@ describe("Validate get all products:", function async() {
       });
   });
 
-  it("should have no errors", function async(done) {
+  it("Should have no errors", function async(done) {
     chai
       .request(app)
       .get("/productList")
