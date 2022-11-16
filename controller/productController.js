@@ -86,14 +86,14 @@ module.exports.updateProduct=async(req,res)=>{
                 quantity:req.body.quantity,
                 low_warn:req.body.low_warn,
                 description:req.body.description}}
-        )
-        console.log(updatedProduct);
+        ) 
         res.json(updatedProduct)
     }catch(err){
         console.log(err);
         res.json({message:err})
     }
 }
+
 module.exports.getUpdateProduct=async(req,res)=>{
     try{ 
         const productData =await product.findById(req.params.productId); 

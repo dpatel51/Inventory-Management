@@ -18,7 +18,7 @@ async function main() {
   await mongoose.connect(
     "mongodb+srv://Prince:Prince1234@cluster0.mdlkjsb.mongodb.net/node-auth"
   );
-  console.log("DB connection done");
+  // console.log("DB connection done");
   app.listen(8080);
 }
 main();

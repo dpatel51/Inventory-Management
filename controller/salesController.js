@@ -9,16 +9,16 @@ const sales = require("../models/sales");
 module.exports.getSales = async (req, res) => {
   try {
     const salesdata = await sales.find();
-    if (salesdata) {
-      console.log(salesdata);
-    }
+     
    // sort the salesdata by date
     salesdata.sort((a, b) => {
       return new Date(b.date) - new Date(a.date);
     });
 
+    res.json(salesdata);
 
-    res.render("sales", { salesdata });
+
+    // res.render("sales", { salesdata }); 
   } catch (err) {
     res.json({ message: err.message });
   }
@@ -156,9 +156,7 @@ module.exports.getTodaysSales = async (req, res) => {
     const today = new Date();
     today.setUTCHours(0, 0, 0, 0);
     const salesdata = await sales.find({ date: today });
-    if (salesdata) {
-      console.log(salesdata);
-    }
+     
     res.json(salesdata);
   } catch (err) {
     res.json({ message: err.message });
