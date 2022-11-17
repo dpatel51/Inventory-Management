@@ -23,14 +23,14 @@ async function main() {
 }
 main();
 
-// app.get('*',checkUser)
-// app.get('/',requireAuth,(req,res)=>{
-//     res.render('home');
-// })
+app.get('*',checkUser)
+app.get('/',requireAuth,(req,res)=>{
+    res.render('home');
+})
 
-app.get("/", (req, res) => {
-  res.render("home");
-});
+// app.get("/", (req, res) => {
+//   res.render("home");
+// });
 app.get("/billing", async (req, res) => {
   try {
     const products = await product.find({ quantity: { $ne: 0 } });
