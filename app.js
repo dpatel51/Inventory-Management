@@ -19,7 +19,7 @@ async function main() {
     "mongodb+srv://Prince:Prince1234@cluster0.mdlkjsb.mongodb.net/node-auth"
   );
   console.log("DB connection done");
-  app.listen(8080);
+  
 }
 main();
 
@@ -54,5 +54,5 @@ app.get("/productList", async (req, res) => {
 });
 
 app.use(authRoutes);
-
+app.listen(8080);
 module.exports = app;
