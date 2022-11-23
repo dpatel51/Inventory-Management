@@ -54,5 +54,5 @@ app.get("/productList", async (req, res) => {
 });
 
 app.use(authRoutes);
-app.listen(8080);
+// app.listen(8080);
 module.exports = app;
