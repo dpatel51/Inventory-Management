@@ -1,4 +1,4 @@
-const User=require('../models/User')
+// const User=require('../models/User')
 const product =require('../models/product')
 
 // methods for managing products

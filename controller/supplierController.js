@@ -1,4 +1,4 @@
-const User=require('../models/User')
+// const User=require('../models/User')
 const supplier =require('../models/supplier')
 
 // methods for managing suppliers
